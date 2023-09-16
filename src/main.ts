@@ -47,6 +47,8 @@ axios({
 
 //导入pinia
 import pinia from '@/store'
+//导入路由守卫
+import './permission'
 app.use(pinia)
 
 app.use(router)

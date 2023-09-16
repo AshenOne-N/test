@@ -25,12 +25,14 @@
 import { User, Lock } from '@element-plus/icons-vue'
 import { reactive,ref } from 'vue';
 import useUserStore from '@/store/modules/user';
-import {useRouter} from 'vue-router';
+import {useRouter,useRoute} from 'vue-router';
 import {ElNotification} from 'element-plus';
 //导入时间判断函数
 import {getTime} from '@/utils/getTime';
 
 let $router = useRouter();
+let $route = useRoute();
+
 let useStore = useUserStore();
 
 let loginForm = reactive({
@@ -48,7 +50,10 @@ async function loginSubmit() {
     loading.value = true;
     try{
         await useStore.userLogin(loginForm);
-        $router.push('/');
+        //判断登录路径是否有query参数，有跳query，无跳首页
+        let redirect:any = $route.query.redirect;
+        $router.push({path:redirect||'/'});
+        //$router.push('/');
         ElNotification({
             type:'success',
             message:"欢迎回来",

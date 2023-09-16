@@ -14,7 +14,7 @@
         </span>
         <template #dropdown>
             <el-dropdown-menu>
-                <el-dropdown-item>退出登录</el-dropdown-item>
+                <el-dropdown-item @click="logout">退出登录</el-dropdown-item>
             </el-dropdown-menu>
         </template>
     </el-dropdown>
@@ -25,6 +25,9 @@ import useLayoutSettingStore from '@/store/modules/setting';
 import useUserStore from '@/store/modules/user';
 let userStore = useUserStore();
 
+import { useRouter ,useRoute} from 'vue-router';
+let $router = useRouter();
+let $route = useRoute();
 
 let layoutSettingStore = useLayoutSettingStore();
 const refreshpage = () => {
@@ -39,6 +42,13 @@ const fullScreen = ()=>{
     }else{
         document.exitFullscreen();//真的不优雅
     }
+}
+const logout = ()=>{
+    //1.发请求，标识token无效
+    //2.清空用户数据
+    userStore.userLogout();
+    //3.跳转登录页面
+    $router.push({path:'/login',query:{redirect:$route.path}});
 }
 </script>
 <style scoped lang="scss">
