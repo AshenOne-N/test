@@ -3,15 +3,22 @@ export interface loginForm{
     username:string,
     password:string
 }
+//定义全部接口返回数据都拥有的类型
+export interface ResponseData{
+    code:number,
+    message:string,
+    ok:boolean,
+}
+/*
 //登录接口返回数据类型
 interface dataType{
     token?:string,
     message?:string
+}*/
+export interface loginResponseData extends ResponseData{
+    data:string,
 }
-export interface loginResponseData{
-    code:number,
-    data:dataType
-}
+/*
 //定义服务器返回用户信息相关数据类型
 interface userInfo{
     userId:number,
@@ -26,8 +33,13 @@ interface userInfo{
 }
 interface user{
     checkUser:userInfo,
-}
-export interface userResponseData{
-    code:number,
-    data:user
+}*/
+export interface userInfoResponseData extends ResponseData{
+    data:{
+        routes:string[],
+        buttons:string[],
+        roles:string[],
+        name:string,
+        avatar:string
+    }
 }

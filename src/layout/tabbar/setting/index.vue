@@ -43,10 +43,10 @@ const fullScreen = ()=>{
         document.exitFullscreen();//真的不优雅
     }
 }
-const logout = ()=>{
+const logout =async ()=>{
     //1.发请求，标识token无效
     //2.清空用户数据
-    userStore.userLogout();
+    await userStore.userLogout();
     //3.跳转登录页面
     $router.push({path:'/login',query:{redirect:$route.path}});
 }

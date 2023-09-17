@@ -38,7 +38,7 @@ router.beforeEach(async (to:any,from:any,next:any)=>{ //内部有await，这里�
                 }catch(error){
                     //token过期或异常
                     //退出登录，清空数据
-                    userStore.userLogout();
+                    await userStore.userLogout();
                     next({path:'/login',query:{redirect:to.path}});
                 }
             }

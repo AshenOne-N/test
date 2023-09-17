@@ -37,7 +37,7 @@ let useStore = useUserStore();
 
 let loginForm = reactive({
     username: 'admin',
-    password: '111111'
+    password: 'atguigu123'
 })
 let loading = ref(false);
 
