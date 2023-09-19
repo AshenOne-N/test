@@ -21,11 +21,13 @@ request.interceptors.request.use((config) => {
 
 request.interceptors.response.use(
   (response) => {
+    console.log(response.data);
     return response.data;
   },
   (error) => {
     let msg = "";
     let status = error.response.status;
+    console.log(11111);
     switch (status) {
       case 401:
         msg = "Token过期";
