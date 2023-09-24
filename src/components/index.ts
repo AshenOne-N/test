@@ -1,10 +1,11 @@
 //引入项目中的全部全局组件
 import svgicon from "@/components/svgicon/index.vue";
 import pagination from "@/components/pagination/index.vue";
+import category from '@/components/category/index.vue'
 //引入element-plus提供的全部图标组件
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 //全局对象
-const allGlobalComponents = { svgicon, pagination };
+const allGlobalComponents = { svgicon, pagination,category };
 //对外暴露插件对消
 export default {
   //必须叫做install方法
